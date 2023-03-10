@@ -8,7 +8,6 @@ git show aefead2207ef7e2aa5dc81a34aedf0cad4c32545 --oneline
 
 aefead2207 Update CHANGELOG.md
 
-
 2.
 
 Какому тегу соответствует коммит 85024d3:
@@ -21,9 +20,6 @@ Date:   Thu Mar 5 20:56:10 2020 +0000
 
     v0.12.23
 
-
-
-
 Сколько родителей у коммита b8d720? Напишите их хеши -  2 родителя:
 
 git show b8d720^
@@ -33,9 +29,6 @@ commit 56cd7859e05c36c06b56d013b55a252d0bb7e158
 git show b8d720^2
 
 commit 9ea88f22fc6269854151c571162c5bcf958bee2b
-
-
-
 
 Перечислите хеши и комментарии всех коммитов, которые были сделаны между тегами v0.12.23 и v0.12.24.
 
@@ -54,21 +47,17 @@ dd01a35078 Update CHANGELOG.md
 85024d3100 (tag: v0.12.23) v0.12.23
 ...........
 
-
-
 Функция func providerSource была создана в коммите:
 
 5af1e6234a
 
-git log -S"func providerSource" --oneline 
+git log -S"func providerSource" --oneline
 
 5af1e6234a main: Honor explicit provider_installation CLI config when present
 
-
-
 Функция globalPluginDirs была изменена в коммите:
 
-git log -S"globalPluginDirs" --oneline 
+git log -S"globalPluginDirs" --oneline
 
 65c4ba7363 Remove terraform binary
 125eb51dc4 Remove accidentally-committed binary
@@ -78,13 +67,11 @@ git log -S"globalPluginDirs" --oneline
 c0b1761096 prevent log output during init
 8364383c35 Push plugin discovery down into command package
 
-
-
 Автор функции synchronizedWriters
 
 Находим первый коммит:
 
-git log -SsynchronizedWriters --oneline 
+git log -SsynchronizedWriters --oneline
 
 bdfea50cc8 remove unused
 fd4f7eb0b9 remove prefixed io
