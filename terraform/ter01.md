@@ -72,3 +72,42 @@ nginx        latest    eb4a57159180   31 hours ago   187MB
 ```
 Могу только по фантозировать что image это уже сущность docker engine и был загружен в локальный репозиторой. При выполнение terraform destroy у terraform нет доступа к папке хранения образов docker (нет прав на папку, что по факту так и есть).
 Поэтому не был удален docker образ nginx:latest.
+
+### Дополнительные задания (со звездочкой*)
+Не стал особо погружаться (на уровне пониммания сути) - взял с сайта (ссылка кстати битаая в ДЗ) описание провайдера и пример (немного подправил):
+```
+terraform {
+  required_providers {
+    virtualbox = {
+      source = "shekeriev/virtualbox"
+      version = "0.0.4"
+    }
+  }
+}
+
+provider "virtualbox" {
+  delay      = 60
+  mintimeout = 5
+}
+
+resource "virtualbox_vm" "vm1" {
+  name   = "debian-11"
+  image  = "https://app.vagrantup.com/shekeriev/boxes/debian-11/versions/0.2/providers/virtualbox.box"
+  cpus   = 1
+  memory    = "512 mib"
+  #user_data = file("${path.module}/user_data")
+
+  network_adapter {
+    type           = "hostonly"
+    device         = "IntelPro1000MTDesktop"
+    host_interface = "vboxnet1"
+    # On Windows use this instead
+    # host_interface = "VirtualBox Host-Only Ethernet Adapter"
+  }
+}
+```
+Консольный virtualbox уже был установлен, проверка созданной ВМ:
+```
+oleg@netology:~$ vboxmanage list vms
+"debian-11" {0b7f5089-b5ed-44a4-a4ec-d6df22837b1f}
+```
