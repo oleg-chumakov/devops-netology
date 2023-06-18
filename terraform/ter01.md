@@ -70,8 +70,11 @@ oleg@netology:~/ter-homeworks/01/src$ docker images
 REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
 nginx        latest    eb4a57159180   31 hours ago   187MB
 ```
-Могу только по фантозировать что image это уже сущность docker engine и был загружен в локальный репозиторой. При выполнение terraform destroy у terraform нет доступа к папке хранения образов docker (нет прав на папку, что по факту так и есть).
-Поэтому не был удален docker образ nginx:latest.
+ГЗDATED: нашёл такую статью registry.terraform.io...rces/image
+где сказано:
+keep_locally (Boolean) If true, then the Docker image won’t be deleted on destroy operation. If this is false, it will delete the image from the docker local storage on destroy operation
+
+то есть, чтобы image был удалённо, нужно выставить значение этого параметра false
 
 ### Дополнительные задания (со звездочкой*)
 Не стал особо погружаться (на уровне пониммания сути) - взял с сайта (ссылка кстати битаая в ДЗ) описание провайдера и пример (немного подправил):
