@@ -12,8 +12,31 @@ resource "yandex_vpc_subnet" "develop" {
 data "yandex_compute_image" "ubuntu" {
   family = var.vm_web_family
 }
+
 resource "yandex_compute_instance" "platform" {
   name        = "netology-develop-platform-web"
+  platform_id = "standard-v3"
+  resources {
+    cores         = var.vm_web_cores
+    memory        = var.vm_web_memory
+    core_fraction = var.vm_web_core_fraction
+  }
+  boot_disk {
+    initialize_params {
+      image_id = data.yandex_compute_image.ubuntu.image_id
+    }
+  }
+  scheduling_policy {
+    preemptible = true
+  }
+  network_interface {
+    subnet_id = yandex_vpc_subnet.develop.id
+    nat       = true
+  }
+}
+
+resource "yandex_compute_instance" "platform-db" {
+  name        = "netology-develop-platform-db"
   platform_id = "standard-v3"
   resources {
     cores         = var.vm_web_cores
