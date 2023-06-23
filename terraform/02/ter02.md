@@ -39,18 +39,24 @@ resource "yandex_compute_instance" "platform" {
 
 ### Задание 3
 
-1. Создайте в корне проекта файл 'vms_platform.tf' . Перенесите в него все переменные первой ВМ.
-2. Скопируйте блок ресурса и создайте с его помощью вторую ВМ(в файле main.tf): **"netology-develop-platform-db"** ,  cores  = 2, memory = 2, core_fraction = 20. Объявите ее переменные с префиксом **vm_db_** в том же файле('vms_platform.tf').
-3. Примените изменения.
-
+ВЫПОЛНЕНО
 
 ### Задание 4
 
-1. Объявите в файле outputs.tf output типа map, содержащий { instance_name = external_ip } для каждой из ВМ.
-2. Примените изменения.
+```
+No changes. Your infrastructure matches the configuration.
 
-В качестве решения приложите вывод значений ip-адресов команды ```terraform output```
+Terraform has compared your real infrastructure against your configuration and found no differences, so no changes are needed.
 
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+ip_address = {
+  "netology-develop-db" = "158.160.36.107"
+  "netology-develop-platform-web" = "84.201.159.16"
+}
+```
 
 ### Задание 5
 

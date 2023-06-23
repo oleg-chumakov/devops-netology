@@ -35,8 +35,8 @@ resource "yandex_compute_instance" "platform" {
   }
 }
 
-resource "yandex_compute_instance" "platform-db" {
-  name        = "netology-develop-platform-db"
+resource "yandex_compute_instance" "db" {
+  name        = "netology-develop-db"
   platform_id = "standard-v3"
   resources {
     cores         = var.vm_web_cores
