@@ -14,8 +14,8 @@ data "yandex_compute_image" "ubuntu" {
 }
 
 resource "yandex_compute_instance" "platform" {
-  name        = "netology-develop-platform-web"
-  platform_id = "standard-v3"
+  name        = var.vm_web_name
+  platform_id = var.platform_id
   resources {
     cores         = var.vm_web_cores
     memory        = var.vm_web_memory
@@ -36,12 +36,12 @@ resource "yandex_compute_instance" "platform" {
 }
 
 resource "yandex_compute_instance" "db" {
-  name        = "netology-develop-db"
-  platform_id = "standard-v3"
+  name        = var.vm_db_name
+  platform_id = var.platform_id
   resources {
-    cores         = var.vm_web_cores
-    memory        = var.vm_web_memory
-    core_fraction = var.vm_web_core_fraction
+    cores         = var.vm_db_cores
+    memory        = var.vm_db_memory
+    core_fraction = var.vm_db_core_fraction
   }
   boot_disk {
     initialize_params {
